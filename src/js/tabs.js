@@ -1,58 +1,49 @@
 /**
- * Tabs component  
+ * Tabs component
  * @param {String} cls  main content fo the component tabs
  * @param {String} link links menu tabs (html element or class)
  * @param {String} container main content for the body tabs (class)
  * @param {String} activeClass class to toggle to show or hide elements
  */
 
+const tabs = (cls, link, container, activeClass) => {
+  /**
+   * check the active class
+   */
+  if (!activeClass) {
+    activeClass = 'active'
+  }
+  // dom selection
+  const tabBlock = document.querySelector(cls)
+  const linksTab = tabBlock.querySelectorAll(link)
+  const content = document.querySelector(container)
 
-const tabs =  (cls, link,container, activeClass) => {
-	/**
-	 * check the active class
-	 */
-	if (!activeClass){
-		activeClass = 'active'
-	}
-	//	dom selection
-	let tabBlock = document.querySelector(cls)
-	let linksTab = tabBlock.querySelectorAll(link)
-	let content = document.querySelector(container)
+  // loop through links
+  linksTab.forEach(link => {
+    // add event listener 'click
 
-	//loop through links 
-	 
-	linksTab.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
 
-		//	  add event listener 'click
+      // target active elements to hide
 
-		link.addEventListener('click', (e)=> {
+      const activeTab = tabBlock.querySelector('li.active')
+      const activeTabContent = content.querySelector('.' + activeClass)
 
-			e.preventDefault()
+      // target the new active body element
+      const target = link.dataset.target
 
+      // toggle classes to hide
 
-			// target active elements to hide
+      activeTab.classList.remove(activeClass)
+      activeTabContent.classList.remove(activeClass)
 
-			let activeTab = tabBlock.querySelector('li.active')
-			let activeTabContent = content.querySelector('.' + activeClass)
+      // toggle classes to show
 
-
-			// target the new active body element
-			let target = link.dataset.target
-
-			// toggle classes to hide
-
-			activeTab.classList.remove(activeClass)
-			activeTabContent.classList.remove(activeClass)
-
-
-			// toggle classes to show
-			
-			link.parentNode.classList.add(activeClass)
-			document.querySelector(target).classList.add(activeClass)
-
-		})
-	});
-
+      link.parentNode.classList.add(activeClass)
+      document.querySelector(target).classList.add(activeClass)
+    })
+  })
 }
 
 export default tabs
