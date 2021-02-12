@@ -1,15 +1,32 @@
+/**
+ * 
+ * @param {*} cls 
+ */
+
 const modal = (cls) => {
 	let btn = document.querySelector(`[data-target="${cls}"]`);
+
 	btn.addEventListener('click', () => {
+	
 		let modal = document.querySelector('.'+btn.dataset.target)
 		modal.classList.add('active')
+	
 		if(modal.classList.contains('active')){
+	
 			initClose(modal)
+			escape(modal)
+	
 		}
 	})
 }
-
+/**
+ * 
+ * @param {*} modal 
+ */
 const initClose = (modal) => {
+	/**
+	 * 
+	 */
 	modal.addEventListener('click', (e) => {
 		let closeBtn = modal.querySelector('.close')
 		 e.cancelBubble = true;
@@ -17,10 +34,15 @@ const initClose = (modal) => {
 			 modal.classList.remove('active')
 		 }
 	})
+	
+}
+const escape = (el) => {
+	/**
+	 * 
+	 */
 	window.addEventListener('keyup', (e) => {
-
 		if (e.key == 'Escape') {
-			modal.classList.remove('active')
+			el.classList.remove('active')
 		}
 	})
 }
