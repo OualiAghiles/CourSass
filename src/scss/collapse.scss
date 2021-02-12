@@ -1,0 +1,29 @@
+.collapse{
+	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.11);;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+    background-color: rgb(245, 245, 245);
+	article{
+		padding: 0;
+		margin: 0;
+		header{
+			padding: 10px 15px;
+		}
+		header{
+			background-color: #ccc;
+		}
+		main{
+			padding: 0;
+			max-height: 0;
+    		transition: max-height 0.25s ease-out;
+			overflow: hidden;
+			p{
+			padding: 10px 15px;
+
+			}
+			&.active{	
+					
+				max-height: 500px;
+				transition: max-height 0.35s ease-in;
+			}
+		}
+	}
+}
