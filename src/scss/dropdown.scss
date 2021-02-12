@@ -1,0 +1,21 @@
+.dropdown, .dropdown-el{
+	position: relative;
+	.dropdown-body{
+            display: none;
+            position: absolute;
+			padding: 10px 25px;
+            top: 0;
+            right: 0;
+            left: 0;
+            background-color: white;
+			transform: translateY(50px);
+            box-shadow: $shadow;
+
+            li a{
+                padding: 15px 10px;
+            }
+            &.active{
+                display: block;
+            }
+        }
+}
